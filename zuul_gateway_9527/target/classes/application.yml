@@ -1,0 +1,18 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: ruigou-zuul-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+zuul:
+  routes:
+    plat.serviceId: ruigou-plat #这是调用满足条件的服务名，注意要小写
+    plat.path: /plat/** #这是所有路径前的通配
+  ignored-services: "*" #用*来通配符，忽略从9527端口通过服务名来调用
+  prefix: "/services" #这是所有路径的前缀
