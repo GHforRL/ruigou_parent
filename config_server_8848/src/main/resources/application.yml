@@ -1,0 +1,18 @@
+server:
+  port: 8848
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: ruigou-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/GHforRL/application_config.git
+          username: GHforRL
+          password: rui9527.cn
