@@ -24,6 +24,6 @@ public class LoginController {
         if ("admin".equals(employee.getName())&&"0".equals(employee.getPassword())){
             return AjaxResult.me();
         }
-        return AjaxResult.me().setSuccess(false).setMessage("用户名或密码不正确!0000");
+        return AjaxResult.me().setSuccess(false).setMessage("用户名或密码不正确!");
     }
 }

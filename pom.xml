@@ -14,6 +14,8 @@
         <module>basic_parent</module>
         <module>plat_parent</module>
         <module>config_server_8848</module>
+        <module>ruigou_code_generator</module>
+        <module>commodity_parent</module>
     </modules>
 
     <properties>

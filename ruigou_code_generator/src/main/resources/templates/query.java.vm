@@ -1,0 +1,10 @@
+package cn.rui97.ruigou.query;
+
+
+/**
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public class ${table.entityName}Query extends BaseQuery{
+}
