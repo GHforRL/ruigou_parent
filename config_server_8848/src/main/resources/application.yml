@@ -7,12 +7,16 @@ eureka:
   instance:
     prefer-ip-address: true
 spring:
+  profiles:
+    active: native
   application:
     name: ruigou-config-server
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/GHforRL/application_config.git
-          username: GHforRL
-          password: rui9527.cn
+        native:
+          search-locations: F:/Github/application_config
+#        git:
+#          uri: https://github.com/GHforRL/application_config.git
+#          username: GHforRL
+#          password: rui9527.cn

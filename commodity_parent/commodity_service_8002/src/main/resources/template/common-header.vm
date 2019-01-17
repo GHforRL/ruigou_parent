@@ -1,0 +1,123 @@
+<div class="header">
+			<div class="w1210">
+				<div class="logo-info">
+					<a href="/" class="logo">
+						<img src="/static/img/test/mall_logo_0.png">
+					</a>
+
+					<!-- logo右侧小广告 _start -->
+					<a href="#" class="logo-right">
+						<img src="/static/img/test/mall_logo_right_ad_image_0.png">
+					</a>
+					<!-- logo右侧小广告 _end -->
+
+				</div>
+				<div class="search SZY-SEARCH-BOX">
+					<form class="search-form SZY-SEARCH-BOX-FORM" method="get" action="/list">
+						<div class="search-info">
+							<div class="search-type-box">
+								<ul class="search-type">
+									<li class="search-li curr" num="0">商品</li>
+									<li class="search-li" num="1">店铺</li>
+								</ul>
+								<i></i>
+							</div>
+							<div class="search-box">
+								<div class="search-box-con">
+									<input type="text" class="keyword search-box-input SZY-SEARCH-BOX-KEYWORD" name="keyword" tabindex="9" autocomplete="off" data-searchwords="连衣裙" placeholder="搜索 连衣裙" value="">
+								</div>
+							</div>
+							<button id="btn_search_box_submit" class="button bg-color btn_search_box_submit SZY-SEARCH-BOX-SUBMIT"></button>
+						</div>
+						<!---热门搜索热搜词显示--->
+
+						<div class="search-results hide SZY-SEARCH-BOX-HELPER">
+							<ul class="history-results">
+								<li class="title">
+									<span>最近搜索</span>
+									<a href="javascript:void(0);" class="clear-history clear">
+										<i></i> 清空
+									</a>
+								</li>
+								<!---->
+							</ul>
+							<ul class="rec-results">
+								<li class="title">
+									<span>正在热搜中</span>
+									<i class="close"></i>
+								</li>
+
+								<li>
+									<a target="_blank" href="#">毛呢大衣</a>
+								</li>
+
+								<li>
+									<a target="_blank" href="#">9.9包邮</a>
+								</li>
+
+								<li>
+									<a target="_blank" href="#">iphone</a>
+								</li>
+
+								<li>
+									<a target="_blank" href="#">特价</a>
+								</li>
+
+								<li>
+									<a target="_blank" href="#">充电宝</a>
+								</li>
+
+							</ul>
+						</div>
+					</form>
+					<ul class="hot-query">
+						<!-- 默认搜索词 -->
+
+						<li class="first">
+							<a href="#">牛仔裤</a>
+						</li>
+
+						<li>
+							<a href="#">POLO衫</a>
+						</li>
+
+						<li>
+							<a href="#">单鞋</a>
+						</li>
+
+						<li>
+							<a href="#">ThinkPAD</a>
+						</li>
+
+						<li>
+							<a href="#">小米6</a>
+						</li>
+
+						<li>
+							<a href="#">华为MATE9</a>
+						</li>
+
+						<li>
+							<a href="#">你懂得</a>
+						</li>
+						
+						<li>
+							<a href="#">你懂得</a>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- 搜索框右侧小广告 _start -->
+
+				<div class="header-right">
+					<a href="#" title="">
+						<img src="/static/img/test/mall_search_right_ad_image_0.png">
+					</a>
+				</div>
+
+				<!-- 搜索框右侧小广告 _end -->
+
+			</div>
+		</div>
+		

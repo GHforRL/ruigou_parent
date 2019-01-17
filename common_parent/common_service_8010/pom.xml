@@ -3,36 +3,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>commodity_parent</artifactId>
+        <artifactId>common_parent</artifactId>
         <groupId>cn.rui97.ruigou</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>commodity_service_8002</artifactId>
+    <artifactId>common_service_8010</artifactId>
 
     <dependencies>
-        <!--springboot支持-->
+        <dependency>
+            <groupId>cn.rui97.ruigou</groupId>
+            <artifactId>common_interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <!--mybatis-plus支持-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>2.2.0</version>
+            <scope>test</scope>
         </dependency>
 
-        <!--数据库支持-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
 
         <!--配置中心支持-->
         <dependency>
@@ -59,29 +54,19 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
         <dependency>
-            <groupId>cn.rui97.ruigou</groupId>
-            <artifactId>commodity_interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
         </dependency>
 
-        <!--eureka客户端支持 内部间调用别人接口-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.rui97.ruigou</groupId>
-            <artifactId>common_interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
         </dependency>
 
-        <!--json操作-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.30</version>
-        </dependency>
     </dependencies>
 
     <!--打包插件依赖-->
@@ -91,7 +76,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>cn.rui97.ruigou.CommodityService_8002</mainClass>
+                    <mainClass>cn.rui97.ruigou.CommonApplication_8010</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>
@@ -104,5 +89,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

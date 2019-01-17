@@ -22,7 +22,7 @@ public class ${entity}Controller {
     * @param ${table.entityPath}  传递的实体
     * @return Ajaxresult转换结果
     */
-    @RequestMapping(value="/add",method= RequestMethod.POST)
+    @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody ${entity} ${table.entityPath}){
         try {
             if(${table.entityPath}.getId()!=null){

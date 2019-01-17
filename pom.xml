@@ -16,6 +16,7 @@
         <module>config_server_8848</module>
         <module>ruigou_code_generator</module>
         <module>commodity_parent</module>
+        <module>common_parent</module>
     </modules>
 
     <properties>

@@ -39,7 +39,7 @@ public class GenteratorCode {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setTablePrefix(new String[] { "t_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略 t_user_xxx UserXxx
-        strategy.setInclude(new String[]{"t_user"}); // 需要生成的表
+        strategy.setInclude(new String[]{"t_commodity","t_commodity_type","t_brand"}); // 需要生成的表
         mpg.setStrategy(strategy);
         // 包配置
         PackageConfig pc = new PackageConfig();
@@ -70,6 +70,26 @@ public class GenteratorCode {
                 return rb.getString("OutputDirBase")+ "/cn/rui97/ruigou/domain/" + tableInfo.getEntityName() + ".java";
             }
         });
+
+        // 调整 query 生成目录演示
+        focList.add(new FileOutConfig("/templates/query.java.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return rb.getString("OutputDirBase")+ "/cn/rui97/ruigou/query/" + tableInfo.getEntityName() + "Query.java";
+            }
+        });
+        cfg.setFileOutConfigList(focList);
+        mpg.setCfg(cfg);
+
+        //controller配置
+        focList.add(new FileOutConfig("/templates/controller.java.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return rb.getString("OutputDir")+ "/cn/rui97/ruigou/controller/" + tableInfo.getEntityName() + "Controller.java";
+            }
+        });
+        cfg.setFileOutConfigList(focList);
+        mpg.setCfg(cfg);
 
         // 调整 xml 生成目录演示
         focList.add(new FileOutConfig("/templates/mapper.xml.vm") {

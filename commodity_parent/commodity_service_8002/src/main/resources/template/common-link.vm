@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+		<!-- 网站头像 -->
+		<link type="text/css" rel="stylesheet" href="/static/css/iconfont.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/common.css">
+		<!--整站改色 _start-->
+		<link type="text/css" rel="stylesheet" href="/static/css/color-style.css">
+		<!--整站改色 _end-->
+		<link rel="stylesheet" href="/static/css/layer.css" id="layuicss-skinlayercss">
+		<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/static/js/layer.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.method.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.modal.js"></script>
+		<script type="text/javascript" src="/static/js/common.js"></script>
+		<!-- 图片缓载js -->
+		<script type="text/javascript" src="/static/js/jquery.lazyload.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// 搜索框提示显示
+				$('.SZY-SEARCH-BOX .SZY-SEARCH-BOX-KEYWORD').focus(function() {
+					$(".SZY-SEARCH-BOX .SZY-SEARCH-BOX-HELPER").show();
+				});
+				// 搜索框提示隐藏
+				$(".SZY-SEARCH-BOX-HELPER .close").on('click', function() {
+					$(".SZY-SEARCH-BOX .SZY-SEARCH-BOX-HELPER").hide();
+				});
+				// 清除记录
+				$(".SZY-SEARCH-BOX-HELPER .clear").click(function() {
+					var url = '/search/clear-record.html';
+					$.post(url, {}, function(result) {
+						if(result.code == 0) {
+							$(".history-results .active").empty();
+						} else {}
+					}, 'json');
+				});
+
+				$(".SZY-SEARCH-BOX-TOP .SZY-SEARCH-BOX-SUBMIT-TOP").click(function() {
+					if($(".search-li-top.curr").attr('num') == 0) {
+						var keyword_obj = $(this).parents(".SZY-SEARCH-BOX-TOP").find(".SZY-SEARCH-BOX-KEYWORD");
+
+						var keywords = $(keyword_obj).val();
+						if($.trim(keywords).length == 0 || $.trim(keywords) == "请输入关键词") {
+							keywords = $(keyword_obj).data("searchwords");
+						}
+						$(keyword_obj).val(keywords);
+					}
+					$(this).parents(".SZY-SEARCH-BOX-TOP").find(".SZY-SEARCH-BOX-FORM").submit();
+				});
+
+				$(".SZY-SEARCH-BOX .SZY-SEARCH-BOX-SUBMIT").click(function() {
+					if($(".search-li.curr").attr('num') == 0) {
+						var keyword_obj = $(this).parents(".SZY-SEARCH-BOX").find(".SZY-SEARCH-BOX-KEYWORD");
+
+						var keywords = $(keyword_obj).val();
+						if($.trim(keywords).length == 0 || $.trim(keywords) == "请输入关键词") {
+							keywords = $(keyword_obj).data("searchwords");
+						}
+						$(keyword_obj).val(keywords);
+					}
+					$(this).parents(".SZY-SEARCH-BOX").find(".SZY-SEARCH-BOX-FORM").submit();
+				});
+			});
+
+			function search_box_remove(key) {
+				var url = '/search/delete-record.html';
+				$.post(url, {
+					data: key
+				}, function(result) {
+					if(result.code == 0) {
+						$("#" + key).css("display", "none");
+					} else {
+
+					}
+				}, 'json');
+			}
+			$(document).on("click", function(e) {
+				var target = $(e.target);
+				if(target.closest(".SZY-SEARCH-BOX").length == 0) {
+					$('.SZY-SEARCH-BOX-HELPER').hide();
+				}
+			});
+		</script>
+		
