@@ -1,6 +1,5 @@
 package cn.rui97.ruigou.utils;
 
-import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
 
 /**

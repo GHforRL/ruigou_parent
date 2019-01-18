@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rui97.ruigou.mapper.BrandMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.rui97.ruigou.domain.Brand">
+        <id column="id" property="id" />
+        <result column="createTime" property="createTime" />
+        <result column="updateTime" property="updateTime" />
+        <result column="name" property="name" />
+        <result column="englishName" property="englishName" />
+        <result column="firstLetter" property="firstLetter" />
+        <result column="description" property="description" />
+        <result column="commodity_type_id" property="commodityTypeId" />
+        <result column="sortIndex" property="sortIndex" />
+        <result column="logo" property="logo" />
+    </resultMap>
+
+    <!--List<Brand> selectPageList(Page<Brand> page, BrandQuery query);-->
+    <select id="selectPageList" parameterType="cn.rui97.ruigou.query.BrandQuery" resultMap="brandMap">
+        SELECT  b.*,t.id tid,t.name tname FROM t_brand  b LEFT JOIN t_commodity_type t ON b.commodity_type_id = t.id
+        <include refid="whereSql"/>
+    </select>
+
+    <sql id="whereSql">
+        <where>
+            <if test="keyword!=null and keyword!=''">
+                and (b.NAME  LIKE concat("%",#{keyword},"%")
+                or b.englishName  LIKE concat("%",#{keyword},"%")
+                or b.description  LIKE concat("%",#{keyword},"%"))
+            </if>
+        </where>
+    </sql>
+
+    <resultMap id="brandMap" type="cn.rui97.ruigou.domain.Brand">
+        <!--基本属性处理-->
+        <id column="id" property="id" />
+        <result column="createTime" property="createTime" />
+        <result column="updateTime" property="updateTime" />
+        <result column="name" property="name" />
+        <result column="englishName" property="englishName" />
+        <result column="firstLetter" property="firstLetter" />
+        <result column="description" property="description" />
+        <result column="commodity_type_id" property="commodityTypeId" />
+        <result column="sortIndex" property="sortIndex" />
+        <result column="logo" property="logo" />
+        <!--关联属性-->
+        <association property="commodityType" javaType="cn.rui97.ruigou.domain.CommodityType">
+            <id column="tid" property="id" />
+            <result column="tname" property="name" />
+        </association>
+    </resultMap>
+
+</mapper>
