@@ -67,7 +67,7 @@ public class CommodityTypeServiceImpl extends ServiceImpl<CommodityTypeMapper, C
         CommodityType pType = commodityTypeMapper.selectById(entity.getPid());
         String path=pType.getPath()+id+".";
         entity.setPath(path);
-        updateById(entity);
+        super.updateById(entity);
         synchronizedOpr();
         return true;
     }
