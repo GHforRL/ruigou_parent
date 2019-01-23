@@ -1,20 +1,18 @@
+server:
+  port: 8010
+  max-http-header-size: 1048576
+  tomcat:
+    max-http-post-size: 1048576
 spring:
-  profiles:
-      active: dev
-  cloud:
-    config:
-      name: application-common #github上面名称
-      profile: ${spring.profiles.active} #环境 java -jar -D xxx jar
-      label: master #分支
-      discovery:
-        enabled: true #从eureka上面找配置服务
-        service-id: ruigou-config-server #指定服务名
-      #uri: http://127.0.0.1:1299 #配置服务器 单机配置
-eureka: #eureka不能放到远程配置中
+  application:
+    name: ruigou-common
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300 #9200是图形界面端,9300代码端
+eureka:
   client:
     service-url:
-     defaultZone: http://localhost:7001/eureka  #告诉服务提供者要把服务注册到哪儿 #单机环境
+      defaultZone: http://localhost:7001/eureka
   instance:
-    prefer-ip-address: true #显示客户端真实ip
-
-
+    prefer-ip-address: true

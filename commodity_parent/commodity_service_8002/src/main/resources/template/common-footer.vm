@@ -3,7 +3,7 @@
 		<div class="site-footer">
 
 			<div class="footer-service">
-				<div align="center"><img src="/static/img/test/14778844965714.jpg" alt="" height="85" width="1210"></div>
+				<div align="center"><img src="/img/test/14778844965714.jpg" alt="" height="85" width="1210"></div>
 			</div>
 
 			<div class="footer-related">
@@ -134,7 +134,7 @@
 						<div class="code-content">
 
 							<div class="code ">
-								<img src="/static/img/test/mall_wx_qrcode_0.jpg">
+								<img src="/img/test/mall_wx_qrcode_0.jpg">
 							</div>
 
 						</div>
@@ -206,11 +206,11 @@
 				<p>&nbsp;</p>
 				
 				<p class="footer-fp-img">
-					<a target="_blank" href="#"><img src="/static/img/test/kxwz.png"></a>
-					<a target="_blank" href="#"><img src="/static/img/test/smyz.png"></a>
-					<a target="_blank" href="#"><img src="/static/img/test/cxyz.jpg"></a>
-					<a target="_blank" href="#"><img src="/static/img/test/hyyz.png"></a>
-					<a target="_blank" href="#"><img src="/static/img/test/jpfw.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/kxwz.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/smyz.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/cxyz.jpg"></a>
+					<a target="_blank" href="#"><img src="/img/test/hyyz.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/jpfw.png"></a>
 				</p>
 			</div>
 
@@ -220,8 +220,8 @@
 		<div style="display: none;"></div>
 		<!-- 底部 _end-->
 		
-		<script type="text/javascript" src="/static/js/jquery.fly.min.js"></script>
-		<script type="text/javascript" src="/static/js/szy.cart.js"></script>
+		<script type="text/javascript" src="/js/jquery.fly.min.js"></script>
+		<script type="text/javascript" src="/js/szy.cart.js"></script>
 		<script type="text/javascript">
 			$().ready(function() {
 				$.cartbox.count = "0";

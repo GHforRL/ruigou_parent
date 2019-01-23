@@ -25,6 +25,81 @@
         <result column="goodCommentCount" property="goodCommentCount" />
         <result column="commonCommentCount" property="commonCommentCount" />
         <result column="badCommentCount" property="badCommentCount" />
+        <result column="medias" property="medias" />
+        <result column="skuTemplate" property="skuTemplate" />
     </resultMap>
+
+    <!--List<Commodity> loadPageData(Page<Commodity> page, CommodityQuery query);-->
+    <select id="loadPageData" parameterType="CommodityQuery" resultMap="commodityMap">
+        SELECT
+            c.*, ct.id ctid,
+            ct.`name` ctname,
+            b.id bid,
+            b. NAME bname,
+            ce.id ceid,
+            ce.description,
+            ce.richContent
+        FROM
+            t_commodity c
+                LEFT JOIN t_commodity_type ct ON c.commodity_type_id = ct.id
+                LEFT JOIN t_brand b ON c.brand_id = b.id
+                LEFT JOIN t_commodity_ext ce ON c.id = ce.commodityId
+        ORDER BY id ASC
+    </select>
+    <resultMap id="commodityMap" type="cn.rui97.ruigou.domain.Commodity">
+        <!--基本信息管理-->
+        <id column="id" property="id" />
+        <result column="createTime" property="createTime" />
+        <result column="updateTime" property="updateTime" />
+        <result column="name" property="name" />
+        <result column="subName" property="subName" />
+        <result column="code" property="code" />
+        <result column="commodity_type_id" property="commodityTypeId" />
+        <result column="onSaleTime" property="onSaleTime" />
+        <result column="offSaleTime" property="offSaleTime" />
+        <result column="brand_id" property="brandId" />
+        <result column="state" property="state" />
+        <result column="maxPrice" property="maxPrice" />
+        <result column="minPrice" property="minPrice" />
+        <result column="saleCount" property="saleCount" />
+        <result column="viewCount" property="viewCount" />
+        <result column="commentCount" property="commentCount" />
+        <result column="commentScore" property="commentScore" />
+        <result column="viewProperties" property="viewProperties" />
+        <result column="goodCommentCount" property="goodCommentCount" />
+        <result column="commonCommentCount" property="commonCommentCount" />
+        <result column="badCommentCount" property="badCommentCount" />
+        <result column="medias" property="medias" />
+        <result column="sku_Template" property="skuTemplate" />
+        <!--品牌和类型-->
+        <association property="brand" javaType="cn.rui97.ruigou.domain.Brand">
+            <id column="bid" property="id" />
+            <result column="bname" property="name" />
+        </association>
+        <association property="commodityType" javaType="cn.rui97.ruigou.domain.CommodityType">
+            <id column="ctid" property="id" />
+            <result column="ctname" property="name" />
+        </association>
+        <association property="commodityExt" javaType="cn.rui97.ruigou.domain.CommodityExt">
+            <id column="ceid" property="id" />
+            <result column="description" property="description" />
+            <result column="richContent" property="richContent" />
+        </association>
+    </resultMap>
+
+    <update id="onSale" parameterType="map">
+        UPDATE t_commodity set state = 1, onSaleTime = #{timeStamp} where id in
+        <foreach collection="ids"  item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
+
+    <!--void offSale(Map<String, Object> params);-->
+    <update id="offSale" parameterType="map">
+        UPDATE t_commodity set state = 0, offSaleTime = #{timeStamp} where id in
+        <foreach collection="ids"  item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
 
 </mapper>

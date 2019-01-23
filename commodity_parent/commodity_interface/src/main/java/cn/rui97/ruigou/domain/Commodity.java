@@ -5,7 +5,12 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * <p>
@@ -13,7 +18,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lurui
- * @since 2019-01-13
+ * @since 2019-01-18
  */
 @TableName("t_commodity")
 public class Commodity extends Model<Commodity> {
@@ -41,6 +46,12 @@ public class Commodity extends Model<Commodity> {
      */
     @TableField("commodity_type_id")
     private Long commodityTypeId;
+
+    /**
+     * 用来返回数据到前台
+     */
+    @TableField(exist = false)
+    private CommodityType commodityType;
     /**
      * 上架时间
      */
@@ -51,6 +62,12 @@ public class Commodity extends Model<Commodity> {
     private Long offSaleTime;
     @TableField("brand_id")
     private Long brandId;
+
+    @TableField(exist = false)
+    private Brand brand;   //用来返回数据到前台
+
+    @TableField(exist = false) //只是用来接收数据,数据库还是没有
+    private CommodityExt commodityExt = new CommodityExt();
     /**
      * 状态
      */
@@ -86,6 +103,12 @@ public class Commodity extends Model<Commodity> {
     private Integer goodCommentCount;
     private Integer commonCommentCount;
     private Integer badCommentCount;
+    private String medias;
+    /**
+     * sku选项模板
+     */
+    @TableField("skuTemplate")
+    private String skuTemplate;
 
 
     public Long getId() {
@@ -256,6 +279,46 @@ public class Commodity extends Model<Commodity> {
         this.badCommentCount = badCommentCount;
     }
 
+    public String getMedias() {
+        return medias;
+    }
+
+    public void setMedias(String medias) {
+        this.medias = medias;
+    }
+
+    public CommodityType getCommodityType() {
+        return commodityType;
+    }
+
+    public void setCommodityType(CommodityType commodityType) {
+        this.commodityType = commodityType;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public CommodityExt getCommodityExt() {
+        return commodityExt;
+    }
+
+    public void setCommodityExt(CommodityExt commodityExt) {
+        this.commodityExt = commodityExt;
+    }
+
+    public String getSkuTemplate() {
+        return skuTemplate;
+    }
+
+    public void setSkuTemplate(String skuTemplate) {
+        this.skuTemplate = skuTemplate;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -264,27 +327,32 @@ public class Commodity extends Model<Commodity> {
     @Override
     public String toString() {
         return "Commodity{" +
-        ", id=" + id +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        ", name=" + name +
-        ", subName=" + subName +
-        ", code=" + code +
-        ", commodityTypeId=" + commodityTypeId +
-        ", onSaleTime=" + onSaleTime +
-        ", offSaleTime=" + offSaleTime +
-        ", brandId=" + brandId +
-        ", state=" + state +
-        ", maxPrice=" + maxPrice +
-        ", minPrice=" + minPrice +
-        ", saleCount=" + saleCount +
-        ", viewCount=" + viewCount +
-        ", commentCount=" + commentCount +
-        ", commentScore=" + commentScore +
-        ", viewProperties=" + viewProperties +
-        ", goodCommentCount=" + goodCommentCount +
-        ", commonCommentCount=" + commonCommentCount +
-        ", badCommentCount=" + badCommentCount +
-        "}";
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", name='" + name + '\'' +
+                ", subName='" + subName + '\'' +
+                ", code='" + code + '\'' +
+                ", commodityTypeId=" + commodityTypeId +
+                ", commodityType=" + commodityType +
+                ", onSaleTime=" + onSaleTime +
+                ", offSaleTime=" + offSaleTime +
+                ", brandId=" + brandId +
+                ", brand=" + brand +
+                ", commodityExt=" + commodityExt +
+                ", state=" + state +
+                ", maxPrice=" + maxPrice +
+                ", minPrice=" + minPrice +
+                ", saleCount=" + saleCount +
+                ", viewCount=" + viewCount +
+                ", commentCount=" + commentCount +
+                ", commentScore=" + commentScore +
+                ", viewProperties='" + viewProperties + '\'' +
+                ", goodCommentCount=" + goodCommentCount +
+                ", commonCommentCount=" + commonCommentCount +
+                ", badCommentCount=" + badCommentCount +
+                ", medias='" + medias + '\'' +
+                ", skuTemplate='" + skuTemplate + '\'' +
+                '}';
     }
 }

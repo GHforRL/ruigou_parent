@@ -19,7 +19,7 @@ public interface ${entity}Client {
      * @param ${table.entityPath}  传递的实体
      * @return Ajaxresult转换结果
      */
-    @RequestMapping(value="/add",method= RequestMethod.POST)
+    @RequestMapping(value="/save",method= RequestMethod.POST)
     AjaxResult save(${entity} ${table.entityPath});
 
     /**
@@ -27,12 +27,12 @@ public interface ${entity}Client {
      * @param id
      * @return
      */
-    @RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
-    AjaxResult delete(@PathVariable("id") Integer id);
+    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+    AjaxResult delete(@PathVariable("id") Long id);
 
     //获取用户
     @RequestMapping("/{id}")
-    ${entity} get(@RequestParam(value="id",required=true) Long id);
+    ${entity} get(@PathVariable(value="id",required=true) Long id);
 
 
     /**

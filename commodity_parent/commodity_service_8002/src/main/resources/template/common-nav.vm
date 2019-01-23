@@ -19,7 +19,7 @@
 
 				<li class="fl"><a class="nav " href="#" target="_blank"
 					title="品牌馆">品牌馆</a> <span class="nav-icon"> <img
-						src="/static/img/test/14766722355540.gif">
+						src="/img/test/14766722355540.gif">
 				</span></li>
 
 				<li class="fl"><a class="nav " href="#" target="_blank"
@@ -30,12 +30,12 @@
 
 				<li class="fr"><a class="nav " href="#" target="_blank"
 					title="商家合作">商家合作</a> <span class="nav-icon"> <img
-						src="/static/img/test/14766722553394.gif">
+						src="/img/test/14766722553394.gif">
 				</span></li>
 
 				<li class="fl"><a class="nav " href="/snapup"
 					title="">抢购专区</a> <span class="nav-icon"> <img
-						src="/static/img/test/14794053929710.gif">
+						src="/img/test/14794053929710.gif">
 				</span></li>
 
 			</ul>

@@ -60,9 +60,14 @@ public class CommodityTypeServiceImpl extends ServiceImpl<CommodityTypeMapper, C
     public boolean insert(CommodityType entity) {
 
         //方案1:
-        //redisClient.set("productType_in_redis", "");
+        //redisClient.set("commodityType_in_redis", "");
         //方案2:为了配置页面静态,这种方案还要好一点
         super.insert(entity); //先做增删改,再做同步
+        Long id = entity.getId();
+        CommodityType pType = commodityTypeMapper.selectById(entity.getPid());
+        String path=pType.getPath()+id+".";
+        entity.setPath(path);
+        updateById(entity);
         synchronizedOpr();
         return true;
     }

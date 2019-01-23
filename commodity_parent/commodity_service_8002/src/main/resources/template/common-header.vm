@@ -2,18 +2,18 @@
 			<div class="w1210">
 				<div class="logo-info">
 					<a href="/" class="logo">
-						<img src="/static/img/test/mall_logo_0.png">
+						<img src="/img/test/mall_logo_0.png">
 					</a>
 
 					<!-- logo右侧小广告 _start -->
 					<a href="#" class="logo-right">
-						<img src="/static/img/test/mall_logo_right_ad_image_0.png">
+						<img src="/img/test/mall_logo_right_ad_image_0.png">
 					</a>
 					<!-- logo右侧小广告 _end -->
 
 				</div>
 				<div class="search SZY-SEARCH-BOX">
-					<form class="search-form SZY-SEARCH-BOX-FORM" method="get" action="/list">
+					<form class="search-form SZY-SEARCH-BOX-FORM" method="get" action="/list.html">
 						<div class="search-info">
 							<div class="search-type-box">
 								<ul class="search-type">
@@ -112,7 +112,7 @@
 
 				<div class="header-right">
 					<a href="#" title="">
-						<img src="/static/img/test/mall_search_right_ad_image_0.png">
+						<img src="/img/test/mall_search_right_ad_image_0.png">
 					</a>
 				</div>
 

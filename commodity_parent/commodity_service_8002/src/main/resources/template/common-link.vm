@@ -5,20 +5,20 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
 		<!-- 网站头像 -->
-		<link type="text/css" rel="stylesheet" href="/static/css/iconfont.css">
-		<link type="text/css" rel="stylesheet" href="/static/css/common.css">
+		<link type="text/css" rel="stylesheet" href="/css/iconfont.css">
+		<link type="text/css" rel="stylesheet" href="/css/common.css">
 		<!--整站改色 _start-->
-		<link type="text/css" rel="stylesheet" href="/static/css/color-style.css">
+		<link type="text/css" rel="stylesheet" href="/css/color-style.css">
 		<!--整站改色 _end-->
-		<link rel="stylesheet" href="/static/css/layer.css" id="layuicss-skinlayercss">
-		<script type="text/javascript" src="/static/js/jquery.js"></script>
-		<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
-		<script type="text/javascript" src="/static/js/layer.js"></script>
-		<script type="text/javascript" src="/static/js/jquery.method.js"></script>
-		<script type="text/javascript" src="/static/js/jquery.modal.js"></script>
-		<script type="text/javascript" src="/static/js/common.js"></script>
+		<link rel="stylesheet" href="/css/layer.css" id="layuicss-skinlayercss">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/js/layer.js"></script>
+		<script type="text/javascript" src="/js/jquery.method.js"></script>
+		<script type="text/javascript" src="/js/jquery.modal.js"></script>
+		<script type="text/javascript" src="/js/common.js"></script>
 		<!-- 图片缓载js -->
-		<script type="text/javascript" src="/static/js/jquery.lazyload.js"></script>
+		<script type="text/javascript" src="/js/jquery.lazyload.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				// 搜索框提示显示

@@ -75,7 +75,7 @@
 							<div id="menu-5" class="menu-bd we-chat-qrcode">
 								<span class="menu-bd-mask"></span>
 								<a target="_top">
-									<img src="/static/img/test/mall_wx_qrcode_0.jpg" alt="官方微信">
+									<img src="/img/test/mall_wx_qrcode_0.jpg" alt="官方微信">
 								</a>
 								<p class="font-14">关注官方微信</p>
 							</div>

@@ -16,7 +16,7 @@
 										<div class="SZY-USER-NOT-LOGIN" style="">
 											<div class="user-pic">
 												<div class="user-pic-mask"></div>
-												<img src="/static/img/test/default_user_portrait_0.png">
+												<img src="/img/test/default_user_portrait_0.png">
 											</div>
 											<br>
 											<p>
@@ -145,7 +145,7 @@
 								</a>
 								<div class="sidebar-code quick-sidebar">
 									<i class="arrow-right"></i>
-									<img src="/static/img/test/mall_wx_qrcode_0.jpg">
+									<img src="/img/test/mall_wx_qrcode_0.jpg">
 								</div>
 							</li>
 							<li class="returnTop" style="display: none;">

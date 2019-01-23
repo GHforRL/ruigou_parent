@@ -33,7 +33,7 @@ public class CommodityTypeController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setSuccess(false).setMessage("保存对象失败！"+e.getMessage());
         }
     }
 

@@ -5,7 +5,7 @@
 		<dl class="cat">
 			<dt class="cat-name">
 				<i class="iconfont ${firstType.logo}"></i> 
-				<a href="/list?commodityType=${firstType.id}" target="_blank" title="$firstType.name">$firstType.name</a>
+				<a href="/list.html?commodityType=${firstType.id}" target="_blank" title="$firstType.name">$firstType.name</a>
 			</dt>
 			<i class="right-arrow">&gt;</i>
 		</dl>
@@ -17,14 +17,14 @@
 					#foreach ($secondType in $firstType.children)
 					<dl class="fore1">
 						<dt style="width: 4em;">
-							<a href="/list?commodityType=${secondType.id}" target="_blank" title="$secondType.name"> <em>$secondType.name</em> <i>&gt;</i>
+							<a href="/list.html?commodityType=${secondType.id}" target="_blank" title="$secondType.name"> <em>$secondType.name</em> <i>&gt;</i>
 							</a>
 						</dt>
 						<dd>
 							<!-- 三级分类循环体 -->
 							#if ($secondType.children)
 							#foreach ($thirdType in $secondType.children)
-							<a href="/list?commodityType=${thirdType.id}" target="_blank" title="${thirdType.name}">${thirdType.name}</a>
+							<a href="/list.html?commodityType=${thirdType.id}" target="_blank" title="${thirdType.name}">${thirdType.name}</a>
 							#end
 							#end
 						</dd>
@@ -37,7 +37,7 @@
 				<!-- 品牌logo -->
 				<div class="item-brands">
 					<div class="brands-inner">
-						<img src="/static/img/test/cat-ad.png" />
+						<img src="/img/test/cat-ad.png" />
 					</div>
 				</div>
 				<!-- 分类广告图片 -->
