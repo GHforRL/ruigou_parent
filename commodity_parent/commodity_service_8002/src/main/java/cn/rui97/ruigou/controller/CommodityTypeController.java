@@ -1,5 +1,6 @@
 package cn.rui97.ruigou.controller;
 
+import cn.rui97.ruigou.domain.Brand;
 import cn.rui97.ruigou.service.ICommodityTypeService;
 import cn.rui97.ruigou.domain.CommodityType;
 import cn.rui97.ruigou.query.CommodityTypeQuery;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/commodityType")
@@ -88,10 +91,28 @@ public class CommodityTypeController {
     * @return PageList 分页对象
     */
     @RequestMapping(value = "/json",method = RequestMethod.POST)
-    public PageList<CommodityType> json(@RequestBody CommodityTypeQuery query)
-    {
+    public PageList<CommodityType> json(@RequestBody CommodityTypeQuery query) {
         Page<CommodityType> page = new Page<CommodityType>(query.getPage(),query.getRows());
             page = commodityTypeService.selectPage(page);
             return new PageList<CommodityType>(page.getTotal(),page.getRecords());
+    }
+    //获取面包屑
+
+    //获取用户
+    @RequestMapping(value = "/crumbs/{id}",method = RequestMethod.GET)
+    public List<Map<String,Object>> getCrumbs(@PathVariable("id")Long commodityTypeId) {
+        return commodityTypeService.getCrumbs(commodityTypeId);
+    }
+
+    //获取品牌
+    @RequestMapping(value = "/brands/{id}",method = RequestMethod.GET)
+    public List<Brand> getBrands(@PathVariable("id")Long commodityTypeId) {
+        return commodityTypeService.getBrands(commodityTypeId);
+    }
+
+    //获取首字母
+    @RequestMapping(value = "/brands/letters/{id}",method = RequestMethod.GET)
+    public Set<String> getLetters(@PathVariable("id")Long commodityTypeId) {
+        return commodityTypeService.getLetters(commodityTypeId);
     }
 }

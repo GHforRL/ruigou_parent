@@ -1,5 +1,6 @@
 package cn.rui97.ruigou.controller;
 
+import cn.rui97.ruigou.client.CommodityDocClient;
 import cn.rui97.ruigou.domain.Sku;
 import cn.rui97.ruigou.domain.Specification;
 import cn.rui97.ruigou.service.ICommodityService;
@@ -21,6 +22,17 @@ import java.util.Map;
 public class CommodityController {
     @Autowired
     public ICommodityService commodityService;
+
+    @Autowired
+    public CommodityDocClient commodityDocClient;
+
+    @RequestMapping(value="/queryCommoditys",method= RequestMethod.POST)
+    public PageList<Map<String,Object>> query(@RequestBody Map<String,Object> query){
+        //从es中查询
+        //query  keyword productyType brandId priceMin priceMax sortField sortType page rows
+        //使用Map后,不用拷贝productDoc和Product直接转换
+        return commodityDocClient.search(query);
+    }
 
     /**
     * 保存和修改公用的

@@ -50,5 +50,5 @@ public interface ICommodityDocService {
      * @param params
      * @return
      */
-    PageList<CommodityDoc> search(Map<String, Object> params);
+    PageList<Map<String,Object>> search(Map<String, Object> params);
 }

@@ -1,0 +1,237 @@
+<!-- 底部 _start-->
+
+		<div class="site-footer">
+
+			<div class="footer-service">
+				<div align="center"><img src="/img/test/14778844965714.jpg" alt="" height="85" width="1210"></div>
+			</div>
+
+			<div class="footer-related">
+
+				<div class="footer-article w1210">
+					<dl class="col-article col-article-spe">
+						<dt class="phone color">028-86261949</dt>
+						<dd class="email color">master@itsrouce.cn</dd>
+
+						<dd class="customer">
+							<span>联系我们</span>
+
+							<a href="#" target="_blank">
+								<em class="icon-ww"></em>
+							</a>
+
+							<a href="#" target="_blank">
+								<em class="icon-qq"></em>
+							</a>
+
+						</dd>
+
+					</dl>
+					<!---->
+					<dl class="col-article col-article-first">
+						<dt>新手上路</dt>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">购物流程</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">订单查询</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">常见问题</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">在线客服</a>
+
+						</dd>
+						<!-- -->
+					</dl>
+					<!---->
+					<dl class="col-article col-article-first">
+						<dt>支付方式</dt>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">网上支付</a>
+
+						</dd>
+						<!-- -->
+					</dl>
+					<!---->
+					<dl class="col-article col-article-first">
+						<dt>配送服务</dt>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">配送范围及收费标准</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">订单进度查询</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">验货与签收</a>
+
+						</dd>
+						<!-- -->
+					</dl>
+					<!---->
+					<dl class="col-article col-article-first">
+						<dt>售后服务</dt>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">退换货政策</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">退换货流程</a>
+
+						</dd>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">退款说明</a>
+
+						</dd>
+						<!-- -->
+					</dl>
+					<!---->
+					<dl class="col-article col-article-first">
+						<dt>商家合作</dt>
+
+						<dd>
+
+							<a rel="nofollow" href="#" target="_blank">商家入驻</a>
+
+						</dd>
+						<!-- -->
+					</dl>
+					<!---->
+
+					<div class="QR-code fr">
+
+						<ul class="tabs">
+
+						</ul>
+						<div class="code-content">
+
+							<div class="code ">
+								<img src="/img/test/mall_wx_qrcode_0.jpg">
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="footer-desc-copyright">
+
+				<p class="footer-ecscinfo">
+					<a href="#">首页</a>
+					|
+
+					<a href="#">隐私保护</a>
+					|
+
+					<a href="#">联系我们</a>
+					|
+
+					<a href="#">免责条款</a>
+					|
+
+					<a href="#">公司简介</a>
+					|
+
+					<a href="#">意见反馈</a>
+
+					|
+					<a rel="nofollow" target="_blank" href="#">会员登录</a>
+					|
+					<a rel="nofollow" target="_blank" href="http://bbs.itsource.cn/">会员论坛</a>
+					|
+					<a href="javascript:;" rel="nofollow">客服热线028-86261949</a>
+				</p>
+				<p class="footer-otherlink">
+					<a title="源码商城" target="_blank" href="http://itsource.cn">源码商城</a>
+
+					|
+
+
+					<a title="菁鱼课堂" target="_blank" href="http://www.itsource.cn">菁鱼课堂</a>
+
+					|
+
+					<a title="资讯速递" target="_blank" href="http://www.itsource.cn">资讯速递</a>
+
+					|
+
+					<a title="快递查询" target="_blank" href="http://m.kuaidi100.com">快递查询</a>
+
+					|
+
+					<a title="论坛" target="_blank" href="http://bbs.itsource.com/forum.php">会员论坛</a>
+
+					|
+
+					<a title="源代码教育咨询有限公司" target="_blank" href="http://www.itsource.cn">源代码教育咨询有限公司</a>
+
+				</p>
+
+				<p class="footer-beian"> ICP备案证书号:
+					<a rel="nofollow" target="_blank" href="#">蜀ICP备88888888号-1</a>
+					<a rel="nofollow" target="_blank" href="#"><i></i>蜀公网安备 45323525326664号</a>
+				</p>
+				<p class="footer-Copyright">Copyright &copy; 2017
+					<a target="_blank" style="margin:0;padding:0;" href="http://www.itsource.cn/">itsource.cn</a> All Rights Reserved. </p>
+				<p>&nbsp;</p>
+				
+				<p class="footer-fp-img">
+					<a target="_blank" href="#"><img src="/img/test/kxwz.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/smyz.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/cxyz.jpg"></a>
+					<a target="_blank" href="#"><img src="/img/test/hyyz.png"></a>
+					<a target="_blank" href="#"><img src="/img/test/jpfw.png"></a>
+				</p>
+			</div>
+
+		</div>
+
+		<!-- 第三方流量统计 -->
+		<div style="display: none;"></div>
+		<!-- 底部 _end-->
+		
+		<script type="text/javascript" src="/js/jquery.fly.min.js"></script>
+		<script type="text/javascript" src="/js/szy.cart.js"></script>
+		<script type="text/javascript">
+			$().ready(function() {
+				$.cartbox.count = "0";
+				// 缓载图片
+				$("img").lazyload({
+					skip_invisible: false,
+					effect: 'fadeIn',
+					failure_limit: 20,
+					threshold: 200
+				});
+
+			});
+		</script>

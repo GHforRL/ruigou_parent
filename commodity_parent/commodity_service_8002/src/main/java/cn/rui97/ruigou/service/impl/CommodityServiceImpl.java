@@ -1,11 +1,13 @@
 package cn.rui97.ruigou.service.impl;
 
 import cn.rui97.ruigou.client.CommodityDocClient;
+import cn.rui97.ruigou.client.PageClient;
 import cn.rui97.ruigou.domain.*;
 import cn.rui97.ruigou.index.CommodityDoc;
 import cn.rui97.ruigou.mapper.*;
 import cn.rui97.ruigou.query.CommodityQuery;
 import cn.rui97.ruigou.service.ICommodityService;
+import cn.rui97.ruigou.service.ICommodityTypeService;
 import cn.rui97.ruigou.util.PageList;
 import cn.rui97.ruigou.util.StrUtils;
 import com.alibaba.fastjson.JSONArray;
@@ -48,6 +50,12 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
     @Autowired
     private CommodityDocClient commodityDocClient;
+
+    @Autowired
+    private PageClient pageClient;
+
+    @Autowired
+    private ICommodityTypeService commodityTypeService;
 
     @Override
     public PageList<Commodity> selectPageList(CommodityQuery query) {
@@ -93,8 +101,8 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
                     sku.setStock(Integer.valueOf(skuData.get(key).toString()));
                 }
                 else if ("state".equals(key)){
-                    Integer state = (Integer) skuData.get(key);
-                    sku.setState(state==1?true:false);
+                    Boolean state = (boolean) skuData.get(key);
+                    sku.setState(state);
                 }else{
                     //others 升高 三维
                     otherProp.put(key, skuData.get(key));
@@ -150,6 +158,8 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             commodityMapper.onSale(params);
             List<CommodityDoc> commodityDocs = commodity2commodityDocs(idsLong);
             commodityDocClient.batchSave(commodityDocs);
+            //生成静态页面
+            staticDetailPage(commodityDocs);
         }else {
             HashMap<String, Object> params = new HashMap<>();
             params.put("ids",idsLong);
@@ -157,6 +167,42 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             commodityMapper.offSale(params);
             commodityDocClient.batchDel(idsLong);
         }
+    }
+
+    private void staticDetailPage(List<CommodityDoc> commodityDocs) {
+        for (CommodityDoc commodityDoc : commodityDocs) {
+            //静态化详情页
+            staticPage(commodityDoc);
+        }
+    }
+
+    private void staticPage(CommodityDoc commodityDoc) {
+        Map<String,Object> IndexParams = new HashMap<>();
+        Map<String, Object> modelMap = new HashMap<>();
+        modelMap.put("staticRoot", "F:\\Github\\ruigou_parent\\commodity_parent\\commodity_service_8002\\src\\main\\resources\\");
+        //面包屑
+        Long commodityTypeId = commodityDoc.getCommodityTypeId();
+        List<Map<String, Object>> crumbs = commodityTypeService.getCrumbs(commodityTypeId);
+        modelMap.put("crumbs",crumbs);
+        //商品
+        modelMap.put("commodity",commodityDoc);
+        //规格参数
+        modelMap.put("viewProperties",JSONArray.parseArray(commodityDoc.getViewProperties(),Specification.class));
+        //详情
+        CommodityExt commodityExt = commodityExtMapper.selectList(new EntityWrapper<CommodityExt>().eq("commodityId", commodityDoc.getId())).get(0);
+        modelMap.put("commodityExt",commodityExt);
+        //sku属性
+        modelMap.put("skuOptions",JSONArray.parseArray(commodityDoc.getSkuProperties(),Specification.class));
+        modelMap.put("skuOptionStrs",commodityDoc.getSkuProperties());
+
+        //skuStr返回，缓存到界面
+        List<Sku> skus = skuMapper.selectList(new EntityWrapper<Sku>().eq("commodityId", commodityDoc.getId()));
+        skus.forEach(sku -> sku.setSkuValues(null));
+        modelMap.put("skus",JSONArray.toJSONString(skus));
+        IndexParams.put("model",modelMap );
+        IndexParams.put("tmeplatePath","F:\\Github\\ruigou_parent\\commodity_parent\\commodity_service_8002\\src\\main\\resources\\template\\detail\\commodity-detail.vm" );
+        IndexParams.put("staticPagePath","F:\\Github\\ruigou_web_parent\\ruigou_shopping\\pages\\"+ commodityDoc.getId()+".html" );
+        pageClient.genStaticPage(IndexParams);
     }
 
     /**
@@ -214,7 +260,6 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         //添加本表信息以外,还要存放关联表
         entity.setUpdateTime(new Date().getTime());
         commodityMapper.updateById(entity);
-
 
         //通过commodityId查询commodityExt
         Wrapper<CommodityExt> wrapper = new EntityWrapper<CommodityExt>()

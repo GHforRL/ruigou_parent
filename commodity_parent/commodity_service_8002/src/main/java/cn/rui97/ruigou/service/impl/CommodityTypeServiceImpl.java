@@ -2,21 +2,22 @@ package cn.rui97.ruigou.service.impl;
 
 import cn.rui97.ruigou.client.PageClient;
 import cn.rui97.ruigou.client.RedisClient;
+import cn.rui97.ruigou.domain.Brand;
 import cn.rui97.ruigou.domain.CommodityType;
+import cn.rui97.ruigou.mapper.BrandMapper;
 import cn.rui97.ruigou.mapper.CommodityTypeMapper;
 import cn.rui97.ruigou.service.ICommodityTypeService;
+import cn.rui97.ruigou.util.StrUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
@@ -38,6 +39,9 @@ public class CommodityTypeServiceImpl extends ServiceImpl<CommodityTypeMapper, C
     @Autowired
     private CommodityTypeMapper commodityTypeMapper;
 
+    @Autowired
+    private BrandMapper brandMapper;
+
     @Override
     public List<CommodityType> treeData() {
         String commodityTypeInRedis = redisClient.get("commodityType_in_redis");
@@ -55,6 +59,60 @@ public class CommodityTypeServiceImpl extends ServiceImpl<CommodityTypeMapper, C
             return treeDataByDb;
         }
     }
+
+    @Override
+    public List<Map<String, Object>> getCrumbs(Long commodityTypeId) {
+        List<Map<String,Object>> result = new ArrayList<>();
+        //1 通过commodityTypeId查commodityType,从里面获取path .1.2.3.
+        CommodityType commodityType = commodityTypeMapper.selectById(commodityTypeId);
+        String path = commodityType.getPath();
+        System.out.println(path);
+        //2 分割path获取层级id集合,遍历每一级的id 1 2 3
+        path = path.substring(1, path.length()-1); //1.2.3
+        List<Long> ids = StrUtils.splitStr2LongArr(path,"\\.");
+        System.out.println(ids);
+        for (Long id : ids) {
+            Map<String,Object> node = new HashMap<>();
+            //3 使用遍历id构造一个节点
+            //3.1 获取自己 通过id查询就ok
+            CommodityType owner = commodityTypeMapper.selectById(id);
+            node.put("ownerCommodityType", owner);
+            //3.2 通过自己pid,查询所有的儿子,再删除自己
+            Long pid = owner.getPid();
+            List<CommodityType> parentAllChildren = commodityTypeMapper
+                    .selectList(new EntityWrapper<CommodityType>().eq("pid", pid));
+            Iterator<CommodityType> iterator = parentAllChildren.iterator();
+            while (iterator.hasNext()){
+                CommodityType curent = iterator.next();
+                if (curent.getId().longValue()== owner.getId().longValue()){
+                    //父亲儿子中我,要干掉.
+                    iterator.remove();
+                    break;
+                }
+            }
+            node.put("otherCommodityTypes", parentAllChildren);
+            result.add(node);
+        }
+
+        return result;
+    }
+
+    @Override
+    public List<Brand> getBrands(Long commodityTypeId) {
+        return brandMapper.selectList(
+                new EntityWrapper<Brand>().eq("commodity_type_id", commodityTypeId));
+    }
+
+    @Override
+    public Set<String> getLetters(Long commodityTypeId) {
+        Set<String> result = new TreeSet<>(); //不重复且排序集合
+        List<Brand> brands = getBrands(commodityTypeId);
+        for (Brand brand : brands) {
+            result.add(brand.getFirstLetter());
+        }
+        return result;
+    }
+
     //增删改已经不是传统的了,要做同步redis-清空缓存,下次查询时,自动查询数据库
     @Override
     public boolean insert(CommodityType entity) {
@@ -74,7 +132,7 @@ public class CommodityTypeServiceImpl extends ServiceImpl<CommodityTypeMapper, C
 
     @Override
     public boolean deleteById(Serializable id) {
-        //redisClient.set("productType_in_redis", "");
+        //redisClient.set("commodityType_in_redis", "");
         super.deleteById(id);
         synchronizedOpr();
         return true;
@@ -82,7 +140,7 @@ public class CommodityTypeServiceImpl extends ServiceImpl<CommodityTypeMapper, C
 
     @Override
     public boolean updateById(CommodityType entity) {
-        //redisClient.set("productType_in_redis", "");
+        //redisClient.set("commodityType_in_redis", "");
         super.updateById(entity);
         synchronizedOpr();
         return true;

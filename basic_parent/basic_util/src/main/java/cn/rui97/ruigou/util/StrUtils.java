@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * @author yaohuaipeng
+ * @author rui
  * @date 2018/10/26-16:16
  */
 public class StrUtils {
@@ -15,9 +15,9 @@ public class StrUtils {
      * @param str
      * @return
      */
-    public static String[] splitStr2StrArr(String str) {
+    public static String[] splitStr2StrArr(String str,String split) {
         if (str != null && !str.equals("")) {
-            return str.split(",");
+            return str.split(split);
         }
         return null;
     }
@@ -30,7 +30,24 @@ public class StrUtils {
      * @return
      */
     public static List<Long> splitStr2LongArr(String str) {
-        String[] strings = splitStr2StrArr(str);
+        String[] strings = splitStr2StrArr(str,",");
+        if (strings == null) return null;
+
+        List<Long> result = new ArrayList<>();
+        for (String string : strings) {
+            result.add(Long.parseLong(string));
+        }
+
+        return result;
+    }
+    /**
+     * 把逗号分隔字符串转换List的Long
+     *
+     * @param str
+     * @return
+     */
+    public static List<Long> splitStr2LongArr(String str,String split) {
+        String[] strings = splitStr2StrArr(str,split);
         if (strings == null) return null;
 
         List<Long> result = new ArrayList<>();

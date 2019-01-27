@@ -72,8 +72,8 @@ public class CommodityDocController implements CommodityDocClient {
         }
     }
 
-    @RequestMapping(value = "/search",method = RequestMethod.GET)
-    public PageList<CommodityDoc> search(Map<String, Object> params) {
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+    public PageList<Map<String,Object>> search(@RequestBody Map<String, Object> params) {
         return commodityDocService.search(params);
     }
 }

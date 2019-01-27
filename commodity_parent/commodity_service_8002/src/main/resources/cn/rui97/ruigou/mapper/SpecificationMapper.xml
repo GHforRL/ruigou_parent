@@ -9,5 +9,17 @@
         <result column="commodity_type_id" property="commodityTypeId" />
         <result column="isSku" property="isSku" />
     </resultMap>
+    <!--List<Specification> getSpecificationsByTypeId(Long commodityTypeId);-->
+    <select id="getSpecifications2TypeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+            s.id,
+            s. NAME,
+            s.commodity_type_id,
+            s.isSku
+        FROM
+            t_specification s
+        WHERE
+            commodity_type_id = #{commodity_type_id,jdbcType=BIGINT};
+    </select>
 
 </mapper>

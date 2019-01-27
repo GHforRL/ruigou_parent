@@ -4,10 +4,12 @@ import cn.rui97.ruigou.service.IBrandService;
 import cn.rui97.ruigou.domain.Brand;
 import cn.rui97.ruigou.query.BrandQuery;
 import cn.rui97.ruigou.util.AjaxResult;
+import cn.rui97.ruigou.util.LetterUtil;
 import cn.rui97.ruigou.util.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,9 +26,12 @@ public class BrandController {
     @RequestMapping(value="/save",method= RequestMethod.POST)
     public AjaxResult save(@RequestBody Brand brand){
         try {
+            brand.setFirstLetter(LetterUtil.getFirstLetter(brand.getName()));
             if(brand.getId()!=null){
+                brand.setUpdateTime(new Date().getTime());
                 brandService.updateById(brand);
             }else{
+                brand.setUpdateTime(new Date().getTime());
                 brandService.insert(brand);
             }
             return AjaxResult.me();

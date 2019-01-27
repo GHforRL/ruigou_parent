@@ -4,7 +4,10 @@ import cn.rui97.ruigou.domain.Specification;
 import cn.rui97.ruigou.mapper.SpecificationMapper;
 import cn.rui97.ruigou.service.ISpecificationService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +20,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class SpecificationServiceImpl extends ServiceImpl<SpecificationMapper, Specification> implements ISpecificationService {
 
+    @Autowired
+    private SpecificationMapper specificationMapper;
+
+    @Override
+    public List<Specification> getSpecificationsByTypeId(Long commodityTypeId) {
+        return specificationMapper.getSpecifications2TypeId(commodityTypeId);
+    }
 }

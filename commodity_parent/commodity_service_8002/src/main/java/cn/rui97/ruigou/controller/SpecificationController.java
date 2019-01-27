@@ -47,34 +47,34 @@ public class SpecificationController {
 
     /**
     * 删除对象信息
-    * @param ids
+    * @param id
     * @return
     */
-//    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-//    public AjaxResult delete(@PathVariable("id") Integer id){
+    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+    public AjaxResult delete(@PathVariable("id") Long id){
+        try {
+            specificationService.deleteById(id);
+            return AjaxResult.me();
+        } catch (Exception e) {
+        e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("删除对象失败！"+e.getMessage());
+        }
+    }
+//    //删除方法优化（可以删一条也可以删多条）
+//    @RequestMapping(value="/{ids}",method=RequestMethod.DELETE)
+//    public AjaxResult deleteMany(@PathVariable("ids") Long[] ids){
 //        try {
-//            specificationService.deleteById(id);
+//            for (Long id : ids) {
+//                specificationService.deleteById(id);
+//            }
 //            return AjaxResult.me();
 //        } catch (Exception e) {
-//        e.printStackTrace();
+//            e.printStackTrace();
 //            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
 //        }
 //    }
-    //删除方法优化（可以删一条也可以删多条）
-    @RequestMapping(value="/{ids}",method=RequestMethod.DELETE)
-    public AjaxResult deleteMany(@PathVariable("ids") Long[] ids){
-        try {
-            for (Long id : ids) {
-                specificationService.deleteById(id);
-            }
-            return AjaxResult.me();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
-        }
-    }
 
-    //获取用户
+    //获取属性
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public Specification get(@RequestParam(value="id",required=true) Long id){
         return specificationService.selectById(id);
@@ -82,7 +82,7 @@ public class SpecificationController {
 
 
     /**
-    * 查看所有的员工信息
+    * 查看所有的属性信息
     * @return
     */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
@@ -145,6 +145,14 @@ public class SpecificationController {
         w.eq("commodity_type_id", commodity.getCommodityTypeId());
         w.eq("isSku", 1);
         return  specificationService.selectList(w);
+    }
+
+    /**
+     * 根据类型Id该类型的获取配置属性
+     */
+    @RequestMapping(value = "/queryById/{commodityTypeId}",method = RequestMethod.GET)
+    public List<Specification> querySpecifications(@PathVariable("commodityTypeId") Long commodityTypeId){
+        return specificationService.getSpecificationsByTypeId(commodityTypeId);
     }
 
 }

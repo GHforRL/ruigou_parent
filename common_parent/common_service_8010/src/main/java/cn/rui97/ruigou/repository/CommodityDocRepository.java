@@ -1,7 +1,7 @@
 package cn.rui97.ruigou.repository;
 
 import cn.rui97.ruigou.index.CommodityDoc;
-import org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * @Description:
  */
 @Repository
-public interface CommodityDocRepository extends ElasticsearchCrudRepository<CommodityDoc,Long> {
+public interface CommodityDocRepository extends ElasticsearchRepository<CommodityDoc,Long> {
 
 }

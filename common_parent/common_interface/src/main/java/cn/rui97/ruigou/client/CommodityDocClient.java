@@ -34,6 +34,6 @@ public interface CommodityDocClient {
     @RequestMapping(value = "/batchDel",method = RequestMethod.DELETE)
     AjaxResult batchDel(@RequestBody List<Long> ids); //批量上传
     //分页搜索
-    @RequestMapping(value = "/search",method = RequestMethod.GET)
-    PageList<CommodityDoc> search(Map<String,Object> params); //搜索
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+    PageList<Map<String,Object>> search(@RequestBody Map<String,Object> params); //搜索
 }

@@ -83,4 +83,15 @@ public class SkuController {
             page = skuService.selectPage(page);
             return new PageList<Sku>(page.getTotal(),page.getRecords());
     }
+
+
+    /**
+     * 获取库存（用垂直分表，将库存独立出一张表来，优化数据库）
+     * @param id
+     * @return
+     */
+    @RequestMapping("/stock/{id}")
+    public String getStock(@PathVariable("id") Long id){
+        return String.valueOf(skuService.selectById(id).getStock());
+    }
 }

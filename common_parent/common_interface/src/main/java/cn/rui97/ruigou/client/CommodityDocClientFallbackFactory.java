@@ -45,7 +45,7 @@ public class CommodityDocClientFallbackFactory implements FallbackFactory<Commod
             }
 
             @Override
-            public PageList<CommodityDoc> search(Map<String, Object> params) {
+            public PageList<Map<String,Object>> search(Map<String, Object> params) {
                 return null;
             }
         };
