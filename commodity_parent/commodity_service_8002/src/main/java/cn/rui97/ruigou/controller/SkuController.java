@@ -33,7 +33,7 @@ public class SkuController {
             return AjaxResult.me();
         } catch (Exception e) {
             e.printStackTrace();
-            return AjaxResult.me().setMessage("保存对象失败！"+e.getMessage());
+            return AjaxResult.me().setSuccess(false).setMessage("保存sku失败！"+e.getMessage());
         }
     }
 
@@ -49,7 +49,7 @@ public class SkuController {
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除sku失败！"+e.getMessage());
         }
     }
 

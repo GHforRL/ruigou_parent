@@ -52,7 +52,7 @@ public class CommodityTypeController {
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
-            return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
+            return AjaxResult.me().setMessage("删除类型失败！"+e.getMessage());
         }
     }
 

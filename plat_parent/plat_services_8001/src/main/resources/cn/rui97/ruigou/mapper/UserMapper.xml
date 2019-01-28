@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rui97.ruigou.mapper.UserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.rui97.ruigou.domain.User">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="avatar" property="avatar" />
+        <result column="nickname" property="nickname" />
+    </resultMap>
+
+    <!--List<User> selectPageList(Page<User> page, UserQuery query);-->
+    <select id="selectPageList" parameterType="cn.rui97.ruigou.query.UserQuery" resultMap="userMap">
+        SELECT * FROM t_user u
+        <include refid="whereSql"/>
+    </select>
+
+    <sql id="whereSql">
+        <where>
+            <if test="keyword!=null and keyword!=''">
+                and (u.username  LIKE concat("%",#{keyword},"%")
+                or u.nickname  LIKE concat("%",#{keyword},"%"))
+            </if>
+        </where>
+    </sql>
+
+    <resultMap id="userMap" type="cn.rui97.ruigou.domain.User">
+        <!--基本属性处理-->
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="avatar" property="avatar" />
+        <result column="nickname" property="nickname" />
+    </resultMap>
+</mapper>
